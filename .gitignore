@@ -1,0 +1,10 @@
+# no .a or .o files
+*.[ao]
+
+# ignore all files in the build/ directory
+build/
+
+# ignore all files in the build/ directory
+bin/
+
+*.swp

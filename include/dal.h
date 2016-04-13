@@ -15,7 +15,8 @@
 #include <iostream>
 #include <stdexcept>
 #include <functional>
-
+#include <algorithm>
+#include <string>
 using std::cout;
 using std::cerr;
 using std::endl;
@@ -23,7 +24,7 @@ using std::string;
 using namespace std;
 
 
-template < typename Key, typename Data >
+template < typename Key, typename Data, typename MyKeyComparator >
 class DAL
 {
     protected:
@@ -38,6 +39,7 @@ class DAL
         NodeAL *mpt_Data;          // Area de armazenamento: vetor regular.
 
         int _search( Key _x ) const; // Metodo de busca auxiliar.
+        int compare(Key _x, Key _y) const;
 
     public:
         DAL ( int _MaxSz = SIZE );
@@ -45,6 +47,10 @@ class DAL
         bool remove( const Key & _x, const Data & _info );     // Remove da lista.
         bool search( const Key & _x, Data & ) const;         // busca publica.
         bool insert( const Key & _novaId, const Data & _novaInfo );
+        Key min() const;
+        Key max() const;
+        bool sucessor ( const Key & _x , Key & _y ) const;
+        bool predecessor ( const Key & _x , Key & _y ) const;
 
         //! Sobrecarga do operador <<, que faz com que seja impresso o conteudo da lista.
         /*! @param _os Output stream, normalmente o <CODE>cout</code>.
@@ -59,6 +65,26 @@ class DAL
             _os << "]";
             return _os;
         }
+};
+
+template < typename Key, typename Data, typename MyKeyComparator >
+class DSAL : public DAL <Key, Data, MyKeyComparator> {
+	public:
+		DSAL( int _MaxSz ) : DAL <Key, Data, MyKeyComparator >( _MaxSz ) {/*Empty*/};
+		virtual ~DSAL () {/*Empty*/};
+
+		bool remove( const Key & _x, const Data & _info);     // Remove da lista.
+        bool insert( const Key & _novaId, const Data & _novaInfo );
+
+        Key max() const;  // Recupera a menor chave do dicionario .
+        Key min() const; // Recupera a menor chave do dicionario .
+		// Recupera em _y a chave sucessora a _x , se existir ( true ).
+		bool sucessor ( const Key & _x , Key & _y ) const;
+		// Recupera em _y a chave antecessora a _x , se existir ( true ).
+		bool predecessor ( const Key & _x , Key & _y ) const;
+	private:
+	 int _search ( const Key & _x) const; // Método de busca auxiliar	
+
 };
 
 

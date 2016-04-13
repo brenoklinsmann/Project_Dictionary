@@ -8,3 +8,6 @@ build/
 bin/
 
 *.swp
+
+#ignore all files in the build /
+*.pdf

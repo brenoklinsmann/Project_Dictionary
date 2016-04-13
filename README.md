@@ -35,8 +35,8 @@ uma ordem especificada por um dos 3 argumento-template. Desta forma, temos:
 
 # Compilando #
 Estando na pasta do projeto pelo terminal use o comando asseguir para compilar:
-	- g++ -std=c++11 -I include src/drive_arraylist.cpp -o bin/dicionary
+	   g++ -std=c++11 -I include src/drive_arraylist.cpp -o bin/dicionary
 Para executar use o código asseguir:
-	- ./bin/dicionary
+	   ./bin/dicionary
 
 -- The end

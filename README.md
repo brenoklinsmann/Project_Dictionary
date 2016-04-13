@@ -34,9 +34,9 @@ uma ordem especificada por um dos 3 argumento-template. Desta forma, temos:
 3. **busca** é feita em O(log n) (busca binária).
 
 # Compilando #
-Estando na pasta do projeto pelo terminal use o comando asseguir para compilar:
+Estando na pasta do projeto pelo terminal use o comando asseguir para compilar
 	g++ -std=c++11 -I include src/drive_arraylist.cpp -o bin/dicionary
-Para executar use o código asseguir :	
+Para executar use o código asseguir
 	./bin/dicionary
 
 -- The end
